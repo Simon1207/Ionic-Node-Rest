@@ -1,0 +1,24 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Crear nueva tarea</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <form (ngSubmit)="logForm()">
+    <ion-label>Agregue nueva Tarea</ion-label>
+    <ion-item>
+      <ion-input type="text" [(ngModel)]="todo.name" name="titulo"></ion-input>
+    </ion-item>
+
+
+
+    <button ion-button type="submit" block>Agregar Tarea</button>
+
+
+  </form>
+</ion-content>

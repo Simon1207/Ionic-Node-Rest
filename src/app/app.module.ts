@@ -7,24 +7,41 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 
+//Paginas
+import {CreartareaPage} from '../pages/creartarea/creartarea';
+import {MostrartareaPage} from '../pages/mostrartarea/mostrartarea'
+
+//Proveedores
+import { NuevaTareaProvider } from '../providers/nueva-tarea/nueva-tarea';
+import { ObtenerTareaProvider } from '../providers/obtener-tarea/obtener-tarea';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    CreartareaPage,
+    MostrartareaPage
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    CreartareaPage,
+    MostrartareaPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    NuevaTareaProvider,
+    ObtenerTareaProvider
+
   ]
 })
 export class AppModule {}

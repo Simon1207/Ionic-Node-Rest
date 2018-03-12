@@ -1,14 +1,19 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      Ionic-Get-Services
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
   <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
+    Esta aplicacion permite consumir una API rest que permite guardar tareas o actividades que se encuentra en
+    <br><a>https://github.com/Simon1207/RestNode</a>
   </p>
+
+  <button ion-button block color="primary" (click)="crearTarea()">Crear tarea</button>
+  <br>
+  <button ion-button block color="secondary"(click)="mostrarTareas()" >Ver todas las tareas</button>
+
 </ion-content>
