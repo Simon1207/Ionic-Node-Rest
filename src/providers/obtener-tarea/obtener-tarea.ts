@@ -30,8 +30,8 @@ tareas:any[]=[];
   }
 
   getUsers() {
-   return this.http.get('https://randomuser.me/api/?results=25');
-  //return this.http.get('http://192.168.0.69:3000/task')
+  return this.http.get('https://randomuser.me/api/?results=25');
+  //return this.http.get('http://192.168.0.69:3000/task');
 
   }
 

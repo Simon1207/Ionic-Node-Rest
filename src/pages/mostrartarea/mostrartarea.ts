@@ -13,6 +13,7 @@ export class MostrartareaPage {
 
   }
 
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad MostrartareaPage');
     //this._ts.mostrar_tareas();
@@ -20,13 +21,18 @@ export class MostrartareaPage {
     this._ts.getUsers()
       .subscribe(
         (data)=>{
-          this.users=data['results'];
-          console.log(this.users=data['results']);
+          console.log(data);
+          /*
+          this.users=data['task'];
+          console.log(this.users=data['task']);
+          */
         },
         (error)=>{
           console.log(error);
         }
       )
   }
+
+
 
 }
