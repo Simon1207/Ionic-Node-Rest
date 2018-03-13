@@ -16,12 +16,16 @@ import { NuevaTareaProvider } from '../providers/nueva-tarea/nueva-tarea';
 import { ObtenerTareaProvider } from '../providers/obtener-tarea/obtener-tarea';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 
+//modals
+import {ConfiguracionModalPage} from '../pages/configuracion-modal/configuracion-modal';
+
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     CreartareaPage,
-    MostrartareaPage
+    MostrartareaPage,
+    ConfiguracionModalPage
   ],
   imports: [
     BrowserModule,
@@ -33,7 +37,8 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
     MyApp,
     HomePage,
     CreartareaPage,
-    MostrartareaPage
+    MostrartareaPage,
+    ConfiguracionModalPage
   ],
   providers: [
     StatusBar,

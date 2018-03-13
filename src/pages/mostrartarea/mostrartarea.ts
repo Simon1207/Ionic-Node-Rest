@@ -9,7 +9,7 @@ import { ObtenerTareaProvider} from '../../providers/obtener-tarea/obtener-tarea
 })
 export class MostrartareaPage {
 
-  users:any[]=[];
+  users:string[];
 
   //componentes necesarios para realizar busqueda filtrada
   searchQuery: string = '';
@@ -17,7 +17,6 @@ export class MostrartareaPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public _ts:ObtenerTareaProvider) {
     this.getUsersWeb();
-
   }
 
 
@@ -40,8 +39,14 @@ export class MostrartareaPage {
           for(var i=0;i<this.users.length;i++){
             console.log("Recorriendo con for");
             console.log(this.users[i]['name']['first']);
-            this.items=this.users[i]['name']['first'];
+            console.log("Agregando a arreglo items");
+            console.log(this.items=this.users[i]['name']['first']);
+            console.log("Arreglo items: ");
+            console.log(this.items+=this.users[i]['name']['first']);
+
           }
+          console.log("ITEMS");
+          console.log(this.items);
 
         },
         (error)=>{
@@ -49,10 +54,6 @@ export class MostrartareaPage {
         }
       )
   }
-
-fillArray(items){
-
-}
 
 /*
 initializeItems() {
@@ -69,8 +70,8 @@ initializeItems() {
 
     //si el valor es un string vacio no filtra items
     if (val && val.trim() != '') {
-      this.items = this.items.filter((item) => {
-        return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      this.users = this.users.filter((user) => {
+        return (user.toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
     }
   }
