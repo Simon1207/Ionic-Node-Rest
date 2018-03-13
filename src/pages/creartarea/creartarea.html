@@ -9,16 +9,86 @@
 
 
 <ion-content padding>
-  <form (ngSubmit)="logForm()">
-    <ion-label>Agregue nueva Tarea</ion-label>
-    <ion-item>
-      <ion-input type="text" [(ngModel)]="todo.name" name="titulo"></ion-input>
-    </ion-item>
+    <form [formGroup]="myForm" (ngSubmit)="saveData()" novalidate>
+        <ion-list>
+          <ion-item>
+            <ion-label stacked>Nombre</ion-label>
+            <ion-input formControlName="name" type="text" placeholder="Nombre"></ion-input>
+          </ion-item>
+          <ion-item *ngIf="myForm.get('name').errors && myForm.get('name').dirty">
+            <p color="danger" ion-text *ngIf="myForm.get('name').hasError('required')">El campo es necesario</p>
+          </ion-item>
+          <ion-item>
+            <ion-label stacked>Compañia:</ion-label>
+            <ion-input formControlName="company" type="text" placeholder="Compañia"></ion-input>
+          </ion-item>
+          <ion-item *ngIf="myForm.get('company').errors && myForm.get('company').dirty">
+            <p color="danger" ion-text *ngIf="myForm.get('company').hasError('required')">El campo es necesario</p>
+            <p color="danger" ion-text *ngIf="myForm.get('company').hasError('minlength')">Minimo 5 caracteres</p>
+            <p color="danger" ion-text *ngIf="myForm.get('company').hasError('maxlength')">Maximo 10 caracteres</p>
+          </ion-item>
+          <ion-item>
+            <ion-label stacked>E-mail:</ion-label>
+            <ion-input formControlName="email" type="text" placeholder="E-mail"></ion-input>
+          </ion-item>
+          <ion-item *ngIf="myForm.get('email').errors && myForm.get('email').dirty">
+            <p color="danger" ion-text *ngIf="myForm.get('email').hasError('required')">El campo es necesario</p>
+            <p color="danger" ion-text *ngIf="myForm.get('email').hasError('email')">email no valido</p>
+          </ion-item>
+        <div *ngIf="flag==true">
+          <div [hidden]="flag">
+            <ion-label stacked>Tarea:</ion-label>
+              <ion-input formControlName="task" type="textarea" placeholder="Agregue una tarea"></ion-input>
+            <ion-item *ngIf="myForm.get('task').errors && myForm.get('task').dirty">
+              <p color="danger" ion-text *ngIf="myForm.get('task').hasError('required')">Agregue una tarea</p>
+            </ion-item>
+        </div>
+        </div>
 
 
+        <div *ngIf="flag==false">
+            <div [hidden]="flag">
+              <ion-label stacked>Tarea:</ion-label>
+                <ion-input formControlName="task" type="textarea" placeholder="Agregue una tarea"></ion-input>
 
-    <button ion-button type="submit" block>Agregar Tarea</button>
+              <ion-item *ngIf="myForm.get('task').errors && myForm.get('task').dirty">
+                <p color="danger" ion-text *ngIf="myForm.get('task').hasError('required')">Agregue una tarea</p>
+              </ion-item>
+          </div>
+          </div>
 
+          <!--
+          <ion-item>
+            <ion-label stacked>Edad:</ion-label>
+            <ion-input formControlName="age" type="number" placeholder="Edad"></ion-input>
+          </ion-item>
+          <ion-item *ngIf="myForm.get('age').errors && myForm.get('age').dirty">
+            <p color="danger" ion-text *ngIf="myForm.get('age').hasError('required')">El campo es necesario</p>
+            <p color="danger" ion-text *ngIf="myForm.get('age').hasError('invalid')">edad invalida</p>
+          </ion-item>
+          <ion-item>
+            <ion-label stacked>sitio web:</ion-label>
+            <ion-input formControlName="url" type="text" placeholder="sitio web"></ion-input>
+          </ion-item>
+          <ion-item *ngIf="myForm.get('url').errors && myForm.get('url').dirty">
+            <p color="danger" ion-text *ngIf="myForm.get('url').hasError('required')">El campo es necesario</p>
+            <p color="danger" ion-text *ngIf="myForm.get('url').hasError('pattern')">No es una web valida</p>
+          </ion-item>
+          <ion-item>
+            <ion-label stacked>Password:</ion-label>
+            <ion-input formControlName="password" type="password" placeholder="Contraseña"></ion-input>
+          </ion-item>
+          <ion-item *ngIf="myForm.get('password').errors && myForm.get('password').dirty">
+            <p color="danger" ion-text *ngIf="myForm.get('password').hasError('required')">El campo es necesario</p>
+            <p color="danger" ion-text *ngIf="myForm.get('password').hasError('pattern')">Contraseña debil</p>
+          </ion-item>
+        -->
+        </ion-list>
+        <div padding>
+          <button ion-button block color="secundary"  (click)="showTask()" >Ver mas datos de registro</button>
 
-  </form>
+          <button ion-button block type="submit" [disabled]="myForm.invalid">Guardar</button>
+        </div>
+      </form>
+
 </ion-content>
